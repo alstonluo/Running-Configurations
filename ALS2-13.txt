@@ -1,0 +1,159 @@
+hostname ALS2
+!
+vtp mode off
+!
+no ip domain lookup
+!
+spanning-tree mode rapid-pvst
+!
+vlan 10
+name DATA
+!
+vlan 20
+name VOICE
+!
+vlan 30
+name MGMT
+!
+interface GigabitEthernet0/0
+shutdown
+!
+interface GigabitEthernet1/0/1
+switchport trunk allowed vlan 10,20,30
+switchport mode trunk
+!
+interface GigabitEthernet1/0/2
+shutdown
+!
+interface GigabitEthernet1/0/3
+switchport trunk allowed vlan 10,20,30
+switchport mode trunk
+!
+interface GigabitEthernet1/0/4
+shutdown
+!
+interface GigabitEthernet1/0/5
+shutdown
+!
+interface GigabitEthernet1/0/6
+shutdown
+!
+interface GigabitEthernet1/0/7
+shutdown
+!
+interface GigabitEthernet1/0/8
+shutdown
+!
+interface GigabitEthernet1/0/9
+shutdown
+!
+interface GigabitEthernet1/0/10
+shutdown
+!
+interface GigabitEthernet1/0/11
+shutdown
+!
+interface GigabitEthernet1/0/12
+shutdown
+!
+interface GigabitEthernet1/0/13
+switchport access vlan 10
+switchport mode access
+switchport voice vlan 20
+spanning-tree portfast
+!
+interface GigabitEthernet1/0/14
+switchport access vlan 10
+switchport mode access
+switchport voice vlan 20
+spanning-tree portfast
+!
+interface GigabitEthernet1/0/15
+switchport access vlan 10
+switchport mode access
+switchport voice vlan 20
+spanning-tree portfast
+!
+interface GigabitEthernet1/0/16
+switchport access vlan 10
+switchport mode access
+switchport voice vlan 20
+spanning-tree portfast
+!
+interface GigabitEthernet1/0/17
+switchport access vlan 10
+switchport mode access
+switchport voice vlan 20
+spanning-tree portfast
+!
+interface GigabitEthernet1/0/18
+switchport access vlan 10
+switchport mode access
+switchport voice vlan 20
+spanning-tree portfast
+!
+interface GigabitEthernet1/0/19
+switchport access vlan 10
+switchport mode access
+switchport voice vlan 20
+spanning-tree portfast
+!
+interface GigabitEthernet1/0/20
+switchport access vlan 10
+switchport mode access
+switchport voice vlan 20
+spanning-tree portfast
+!
+interface GigabitEthernet1/0/21
+switchport access vlan 10
+switchport mode access
+switchport voice vlan 20
+spanning-tree portfast
+!
+interface GigabitEthernet1/0/22
+switchport access vlan 10
+switchport mode access
+switchport voice vlan 20
+spanning-tree portfast
+!
+interface GigabitEthernet1/0/23
+switchport access vlan 10
+switchport mode access
+switchport voice vlan 20
+spanning-tree portfast
+!
+interface GigabitEthernet1/0/24
+switchport access vlan 10
+switchport mode access
+switchport voice vlan 20
+spanning-tree portfast
+!
+interface GigabitEthernet1/1/1
+shutdown
+!
+interface GigabitEthernet1/1/2
+shutdown
+!
+interface GigabitEthernet1/1/3
+shutdown
+!
+interface GigabitEthernet1/1/4
+shutdown
+!
+interface Vlan10
+description DATA VLAN Interface
+no ip address
+!
+interface Vlan20
+description VOICE VLAN Interface
+no ip address
+!
+interface Vlan30
+description MGMT VLAN Interface
+no ip address
+!
+line con 0
+exec-timeout 0 0
+logging synchronous
+!
+end

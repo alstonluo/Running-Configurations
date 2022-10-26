@@ -1,0 +1,36 @@
+hostname ISP
+!
+no ip domain lookup
+!
+interface GigabitEthernet0/0/0
+no ip address
+!
+interface GigabitEthernet0/0/0.50
+encapsulation dot1Q 50
+description To Aggregate Network (Internet)
+!
+interface GigabitEthernet0/0/0.60
+encapsulation dot1Q 60
+description To Aggregate Network (WAN)
+!
+interface GigabitEthernet0/0/1
+no ip address
+!
+interface GigabitEthernet0/0/1.100
+encapsulation dot1Q 100
+description INET
+!
+interface GigabitEthernet0/0/1.200
+encapsulation dot1Q 200
+description WAN
+!
+interface GigabitEthernet0/0/2
+shutdown
+!
+interface GigabitEthernet0
+shutdown
+!
+line con 0
+logging synchronous
+!
+end

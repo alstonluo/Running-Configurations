@@ -1,0 +1,31 @@
+hostname Edge1
+!
+no ip domain lookup
+!
+interface GigabitEthernet0/0/1
+no ip address
+!
+interface GigabitEthernet0/0/1.100
+description INET
+encapsulation dot1Q 100
+!
+interface GigabitEthernet0/0/1.200
+description WAN
+encapsulation dot1Q 200
+!
+interface GigabitEthernet0/0/2
+shutdown
+!
+interface Serial0/1/0
+clock rate 64000
+!
+interface Serial0/1/1
+clock rate 64000
+!
+interface GigabitEthernet0
+shutdown
+!
+line con 0
+logging synchronous
+!
+end

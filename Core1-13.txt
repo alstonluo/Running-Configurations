@@ -1,0 +1,16 @@
+hostname Core1
+!
+no ip domain lookup
+!
+interface GigabitEthernet0/0/2
+no ip address
+shutdown
+negotiation auto
+!
+interface GigabitEthernet0
+shutdown
+!
+line con 0
+logging synchronous
+!
+end
