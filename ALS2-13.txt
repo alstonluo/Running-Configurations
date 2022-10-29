@@ -1,3 +1,6 @@
+enable
+configure terminal
+!
 hostname ALS2
 !
 vtp mode off
@@ -5,6 +8,8 @@ vtp mode off
 no ip domain lookup
 !
 spanning-tree mode rapid-pvst
+!
+ip routing
 !
 vlan 10
 name DATA
@@ -155,5 +160,7 @@ no ip address
 line con 0
 exec-timeout 0 0
 logging synchronous
+!
+ipv6 unicast-routing
 !
 end

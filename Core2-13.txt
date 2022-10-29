@@ -1,3 +1,6 @@
+enable
+configure terminal
+!
 hostname Core2
 !
 no ip domain lookup
@@ -10,5 +13,7 @@ shutdown
 !
 line con 0
 logging synchronous
+!
+ipv6 unicast-routing
 !
 end

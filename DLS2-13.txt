@@ -1,3 +1,6 @@
+enable
+configure terminal
+!
 hostname DLS2
 !
 no ip domain lookup
@@ -5,6 +8,8 @@ no ip domain lookup
 vtp mode off
 !
 spanning-tree mode rapid-pvst
+!
+ip routing
 !
 vlan 10
 name DATA
@@ -130,5 +135,7 @@ no ip address
 line con 0
 exec-timeout 0 0
 logging synchronous
+!
+ipv6 unicast-routing
 !
 end
