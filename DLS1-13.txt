@@ -10,6 +10,7 @@ vtp mode off
 spanning-tree mode rapid-pvst
 !
 ip routing
+ipv6 unicast-routing
 !
 vlan 10
 name DATA
@@ -27,8 +28,9 @@ interface GigabitEthernet1/0/1
 description DLS1 to DLS2
 no switchport
 ip address 10.13.6.1 255.255.255.252
+ip ospf 13 area 0
 ipv6 address 2001:db8:13:4::D1/64
-ipv6 address fe80::D1 link-local
+ipv6 ospf 13 area 0
 !
 interface GigabitEthernet1/0/2
 shutdown
@@ -63,8 +65,9 @@ interface GigabitEthernet1/0/11
 description Core1 to DLS1 Link
 no switchport
 ip address 10.13.5.2 255.255.255.252
+ip ospf 13 area 0
 ipv6 address 2001:db8:13:3::2/64
-ipv6 address fe80::D1 link-local
+ipv6 ospf 13 area 0
 !
 interface GigabitEthernet1/0/12
 shutdown
@@ -123,29 +126,51 @@ shutdown
 interface Vlan10
 description DATA VLAN Interface
 ip address 10.13.0.1 255.255.254.0
+ip ospf 13 area 13
 ipv6 address 2001:db8:13:0::D1/64
 ipv6 address fe80::D1 link-local
+ipv6 ospf 13 area 13
 !
 interface Vlan20
 description VOICE VLAN Interface
 ip address 10.13.2.1 255.255.254.0
+ip ospf 13 area 13
 ipv6 address 2001:db8:13:1::D1/64
 ipv6 address fe80::D1 link-local
+ipv6 ospf 13 area 13
 !
 interface Vlan30
 description MGMT VLAN Interface
 ip address 10.13.4.1 255.255.255.192
+ip ospf 13 area 13
 ipv6 address 2001:db8:13:2::D1/64
 ipv6 address fe80::D1 link-local
+ipv6 ospf 13 area 13
 !
 interface Loopback0
 ip address 5.5.5.5 255.255.255.255
+ip ospf 13 area 13
 ipv6 address FC00:13:5::5/128
+ipv6 address fe80::D1 link-local
+ipv6 ospf 13 area 13
+!
+router ospfv3 13
+ router-id 13.5.5.5
+ auto-cost reference-bandwidth 10000
+ area 13 nssa no-summary
+ !
+ address-family ipv6 unicast
+  exit-address-family 
+ !
+ address-family ipv4 unicast
+  exit-address-family 
+ !
+ passive-interface Vlan10
+ passive-interface Vlan20
+ passive-interface Loopback0
 !
 line con 0
 exec-timeout 0 0
 logging synchronous
-!
-ipv6 unicast-routing
 !
 end
