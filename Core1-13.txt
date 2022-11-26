@@ -54,18 +54,86 @@ end
 
 conf t 
 !
+!
+key chain OntarioTech2022
+ key 1
+  key-string Case$tudy2022
+!
+!
 router eigrp OntarioTech2022
-!
-address-family ipv4 unicast autonomous-system 213
-eigrp router-id 13.1.1.1
-address-family ipv4 unicast autonomous-system 213
-network 10.13.8.1 0.0.0.0
-network 10.13.8.9 0.0.0.0
-network 10.13.8.13 0.0.0.0
-network 1.1.1.1 0.0.0.0
-!
-end
-!
+ !
+ address-family ipv4 unicast autonomous-system 213
+  !
+  af-interface GigabitEthernet0/0/0
+   authentication mode hmac-sha-256 Case$tudy22
+   hello-interval 1
+   hold-time 5
+  exit-af-interface
+  !
+  af-interface Serial0/1/0
+   authentication mode hmac-sha-256 Case$tudy22
+   hello-interval 1
+   hold-time 5
+  exit-af-interface
+  !
+  af-interface Serial0/1/1
+   authentication mode hmac-sha-256 Case$tudy22
+   hello-interval 1
+   hold-time 5
+  exit-af-interface
+  !
+  af-interface Loopback0
+   passive-interface
+  exit-af-interface
+  !
+  af-interface GigabitEthernet0/0/1
+   passive-interface
+  exit-af-interface
+  !
+  topology base
+  exit-af-topology
+  network 1.1.1.1 0.0.0.0
+  network 10.13.8.1 0.0.0.0
+  network 10.13.8.9 0.0.0.0
+  network 10.13.8.13 0.0.0.0
+  eigrp router-id 13.1.1.1
+ exit-address-family
+ !
+ address-family ipv6 unicast autonomous-system 213
+  !
+  af-interface GigabitEthernet0/0/0
+   authentication mode hmac-sha-256 Case$tudy22
+   authentication key-chain OntarioTech2022
+   hello-interval 1
+   hold-time 5
+  exit-af-interface
+  !
+  af-interface Serial0/1/0
+   authentication mode hmac-sha-256 Case$tudy22
+   authentication key-chain OntarioTech2022
+   hello-interval 1
+   hold-time 5
+  exit-af-interface
+  !
+  af-interface Serial0/1/1
+   authentication mode hmac-sha-256 Case$tudy22
+   authentication key-chain OntarioTech2022
+   hello-interval 1
+   hold-time 5
+  exit-af-interface
+  !
+  af-interface Loopback0
+   passive-interface
+  exit-af-interface
+  !
+  af-interface GigabitEthernet0/0/1
+   passive-interface
+  exit-af-interface
+  !       
+  topology base
+  exit-af-topology
+  eigrp router-id 1.1.1.1
+ exit-address-family
 
 
 
