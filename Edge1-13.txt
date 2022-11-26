@@ -58,6 +58,15 @@ interface Loopback0
 ip address 3.3.3.3 255.255.255.255
 ipv6 address FC00:13:3::3/128
 !
+ip local policy route-map Edge1-to-Core1-Loopback0
+!
+ip access-list extended Edge1-to-Core1-Loopback0
+ 10 permit ip host 3.3.3.3 host 1.1.1.1
+!
+route-map LOCAL-PBR permit 10 
+ match ip address Edge1-to-Core1-Loopback0
+ set ip next-hop 10.13.8.14
+!
 line con 0
 logging synchronous
 !
