@@ -63,4 +63,14 @@ logging synchronous
 !
 ipv6 unicast-routing
 !
+
+router eigrp OntarioTech2022
+!
+eigrp router-id 13.3.3.3
+!
+address-family ipv4 unicast autonomous-system 213
+network 10.13.8.9 0.0.0.0
+network 10.13.8.13 0.0.0.0
+network 10.13.8.5 0.0.0.0
+!
 end
