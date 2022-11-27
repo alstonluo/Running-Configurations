@@ -39,6 +39,8 @@ key chain OntarioTech2022
  key 1
  key-string Case$tudy2022
 !
+ip access-list standard 13
+10 permit 10.13.8.1 0.0.0.0
 !
 router eigrp OntarioTech2022
  !
@@ -89,6 +91,7 @@ router eigrp OntarioTech2022
   exit-af-interface
   !
   topology base
+  offset-list 13 in 20000 g0/0/1
   exit-af-topology
   eigrp router-id 2.2.2.2
  exit-address-family
