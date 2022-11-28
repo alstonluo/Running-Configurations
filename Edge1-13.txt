@@ -97,4 +97,14 @@ network 2001:DB8:13:8::/64
 network 2001:DB8:13:9::/64
 exit-address-family
 !
+route-map PRIMARY_IN permit 10
+set local-preference 500
+exit
+!
+router bgp 65512
+neighbor 100.84.13.2 route-map PRIMARY_IN in
+neighbor 172.16.13.2 route-map PRIMARY_IN in
+neighbor 2001:DB8:13:ABCD::2 route-map PRIMARY_IN in
+neighbor 2001:DB8:13:CAFE::2/64 route-map PRIMARY_IN in
+!
 end
