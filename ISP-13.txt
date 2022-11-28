@@ -68,4 +68,22 @@ logging synchronous
 !
 ipv6 unicast-routing
 !
+router bgp 65512
+bgp router-id 13.4.4.4
+bgp log-neighbor-changes
+neighbor 2001:DB8:13:ABCD::2 remote-as 65013
+neighbor 2001:DB8:13:CAFE::2 remote-as 65013
+neighbor 100.84.13.2 remote-as 65013
+neighbor 172.16.13.2 remote-as 65013
+!        
+address-family ipv4
+network 10.13.0.0 mask 255.255.254.0
+network 10.13.2.0 mask 255.255.254.0
+network 10.13.4.0 mask 255.255.255.192
+no neighbor 2001:DB8:13:ABCD::2 activate
+no neighbor 2001:DB8:13:CAFE::2 activate
+neighbor 100.84.13.2 activate
+neighbor 172.16.13.2 activate
+exit-address-family
+!
 end
