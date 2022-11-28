@@ -48,12 +48,14 @@ router eigrp OntarioTech2022
   !
   af-interface GigabitEthernet0/0/0
    authentication mode hmac-sha-256 Case$tudy22
+   authentication key-chain OntarioTech2022
    hello-interval 1
    hold-time 5
   exit-af-interface
   !
   af-interface GigabitEthernet0/0/1
    authentication mode hmac-sha-256 Case$tudy22
+    authentication key-chain OntarioTech2022
    hello-interval 1
    hold-time 5
   exit-af-interface
@@ -63,10 +65,12 @@ router eigrp OntarioTech2022
   exit-af-interface
   !
   topology base
+  offset-list 13 in 20000 g0/0/1
   exit-af-topology
   network 2.2.2.2 0.0.0.0
   network 10.13.8.2 0.0.0.0
   network 10.13.8.5 0.0.0.0
+  network 2.2.2.2 0.0.0.0
   eigrp router-id 13.2.2.2
  exit-address-family
  !
@@ -91,7 +95,6 @@ router eigrp OntarioTech2022
   exit-af-interface
   !
   topology base
-  offset-list 13 in 20000 g0/0/1
   exit-af-topology
   eigrp router-id 2.2.2.2
  exit-address-family

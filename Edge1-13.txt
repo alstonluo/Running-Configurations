@@ -75,18 +75,21 @@ router eigrp OntarioTech2022
   !
   af-interface GigabitEthernet0/0/0
    authentication mode hmac-sha-256 Case$tudy22
+   authentication key-chain OntarioTech2022
    hello-interval 1
    hold-time 5
   exit-af-interface
   !
   af-interface Serial0/1/0
    authentication mode hmac-sha-256 Case$tudy22
+   authentication key-chain OntarioTech2022
    hello-interval 1
    hold-time 5
   exit-af-interface
   !
   af-interface Serial0/1/1
    authentication mode hmac-sha-256 Case$tudy22
+   authentication key-chain OntarioTech2022
    hello-interval 1
    hold-time 5
   exit-af-interface
