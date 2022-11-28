@@ -67,6 +67,15 @@ ip nat inside source list 1 interface GigabitEthernet0/0/1.100 overload
 ip access-list standard 1
  10 permit 10.13.0.0 0.0.255.255
 !
+ip local policy route-map LOCAL-PBR
+!
+ip access-list extended Edge1-to-Core1-Loopback0
+ 10 permit ip host 3.3.3.3 host 1.1.1.1
+!
+route-map LOCAL-PBR permit 10 
+ match ip address Edge1-to-Core1-Loopback0
+ set ip next-hop 10.13.8.14
+!
 line con 0
 logging synchronous
 !

@@ -63,6 +63,15 @@ router ospfv3 13
  !
  passive-interface Loopback0
 !
+ip local policy route-map LOCAL-PBR
+!
+ip access-list extended Core1-to-Edge1-Loopback0
+ 10 permit ip host 1.1.1.1 host 3.3.3.3
+!
+route-map LOCAL-PBR permit 10 
+ match ip address Core1-to-Edge1-Loopback0
+ set ip next-hop 10.13.8.9
+!
 line con 0
 logging synchronous
 !

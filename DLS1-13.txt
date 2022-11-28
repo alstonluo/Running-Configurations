@@ -12,6 +12,19 @@ spanning-tree mode rapid-pvst
 ip routing
 ipv6 unicast-routing
 !
+ip dhcp excluded-address 10.13.0.1 10.13.0.20
+ip dhcp excluded-address 10.13.2.1 10.13.2.15
+!
+ip dhcp pool DATA-POOL
+ network 10.13.0.0 255.255.254.0
+ domain-name ontariotechu.ca
+ default-router 10.13.0.3
+!
+ip dhcp pool VOICE-POOL
+ network 10.13.2.0 255.255.254.0
+ domain-name ontariotechu.ca
+ default-router 10.13.2.3
+!
 vlan 10
 name DATA
 !
