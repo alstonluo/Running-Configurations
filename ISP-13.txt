@@ -76,14 +76,14 @@ neighbor 2001:DB8:13:CAFE::1 remote-as 65013
 neighbor 100.84.13.1 remote-as 65013
 neighbor 172.16.13.1 remote-as 65013
 !        
-address-family ipv4
-network 10.13.0.0 mask 255.255.254.0
-network 10.13.2.0 mask 255.255.254.0
-network 10.13.4.0 mask 255.255.255.192
-no neighbor 2001:DB8:13:ABCD::2 activate
-no neighbor 2001:DB8:13:CAFE::2 activate
-neighbor 100.84.13.2 activate
-neighbor 172.16.13.2 activate
+address-family ipv4 unicast
+neighbor 100.84.13.1 activate
+neighbor 172.16.13.1 activate
+exit-address-family
+!
+address-family ipv6 unicast
+neighbor 2001:DB8:13:ABCD::1 activate
+neighbor 2001:DB8:13:CAFE::1 activate
 exit-address-family
 !
 end
