@@ -70,10 +70,29 @@ ipv6 unicast-routing
 !
 interface g0/0/1.100
 encapsulation dot1q 60
-ip route 100.84.13.1 255.255.255.248 g0/0/1.100
-ipv6 route 2001:DB8:13:ABCD::1/64 FE80::3 g0/0/1.100
 exit
 !
+ip route 100.84.13.1 255.255.255.248 g0/0/1.100
+ipv6 route 2001:DB8:13:ABCD::1/64 FE80::3 g0/0/1.100
+!
 ipv6 route 2001:db8:13::/48 FE80::3 g0/0/1.00
+!
+router bgp 65512
+bgp router-id 13.4.4.4
+bgp log-neighbor-changes
+neighbor 2001:DB8:13:ABCD::1 remote-as 65013
+neighbor 2001:DB8:13:CAFE::1 remote-as 65013
+neighbor 100.84.13.1 remote-as 65013
+neighbor 172.16.13.1 remote-as 65013
+!        
+address-family ipv4 unicast
+neighbor 100.84.13.1 activate
+neighbor 172.16.13.1 activate
+exit-address-family
+!
+address-family ipv6 unicast
+neighbor 2001:DB8:13:ABCD::1 activate
+neighbor 2001:DB8:13:CAFE::1 activate
+exit-address-family
 !
 end
