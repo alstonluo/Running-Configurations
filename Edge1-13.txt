@@ -76,9 +76,81 @@ route-map LOCAL-PBR permit 10
  match ip address Edge1-to-Core1-Loopback0
  set ip next-hop 10.13.8.14
 !
+key chain OntarioTech2022
+ key 1
+  key-string Case$tudy2022
+!
+router eigrp OntarioTech2022
+ !
+ address-family ipv4 unicast autonomous-system 213
+  !
+  af-interface GigabitEthernet0/0/0
+   authentication mode hmac-sha-256 Case$tudy22
+   authentication key-chain OntarioTech2022
+   hello-interval 1
+   hold-time 5
+  exit-af-interface
+  !
+  af-interface Serial0/1/0
+   authentication mode hmac-sha-256 Case$tudy22
+   authentication key-chain OntarioTech2022
+   hello-interval 1
+   hold-time 5
+  exit-af-interface
+  !
+  af-interface Serial0/1/1
+   authentication mode hmac-sha-256 Case$tudy22
+   authentication key-chain OntarioTech2022
+   hello-interval 1
+   hold-time 5
+  exit-af-interface
+  !
+  af-interface Loopback0
+   passive-interface
+  exit-af-interface
+  !       
+  topology base
+  exit-af-topology
+  network 3.3.3.3 0.0.0.0
+  network 10.13.8.6 0.0.0.0
+  network 10.13.8.10 0.0.0.0
+  network 10.13.8.14 0.0.0.0
+  eigrp router-id 13.3.3.3
+ exit-address-family
+ !        
+ address-family ipv6 unicast autonomous-system 213
+  !       
+  af-interface GigabitEthernet0/0/0
+   authentication mode hmac-sha-256 Case$tudy22
+   authentication key-chain OntarioTech2022
+   hello-interval 1
+   hold-time 5
+  exit-af-interface
+  !       
+  af-interface Serial0/1/0
+   authentication mode hmac-sha-256 Case$tudy22
+   authentication key-chain OntarioTech2022
+   hello-interval 1
+   hold-time 5
+  exit-af-interface
+  !       
+  af-interface Serial0/1/1
+   authentication mode hmac-sha-256 Case$tudy22
+   authentication key-chain OntarioTech2022
+   hello-interval 1
+   hold-time 5
+  exit-af-interface
+  !       
+  af-interface Loopback0
+   passive-interface
+  exit-af-interface
+  !       
+  topology base
+  exit-af-topology
+  eigrp router-id 3.3.3.3
+ exit-address-family
+!
 line con 0
 logging synchronous
-!
-ipv6 unicast-routing
 !
 end
