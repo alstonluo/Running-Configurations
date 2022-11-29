@@ -156,4 +156,28 @@ line con 0
 exec-timeout 0 0
 logging synchronous
 !
+router ospf 13
+area 13 range 10.13.0.0 255.255.255.0
+area 13 range 2001:db8:13:0::0/64
+!
+route-map Loopback0_f deny 13
+match ip address LO1_deny
+exit
+!
+ip access-list standard LO1_deny
+deny 5.5.5.5 255.255.255.255
+deny 6.6.6.6 255.255.255.255
+deny 7.7.7.7 255.255.255.255
+deny 8.8.8.8 255.255.255.255
+!
+route-map Loopback0_F deny 13
+match ip address LO1v6_deny
+exit
+!
+ip access-list standard LO1v6_deny
+deny FC00:13:5::5/128
+deny FC00:13:6::6/128
+deny FC00:13:7::7/128
+deny FC00:13:8::8/128
+!
 end

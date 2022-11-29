@@ -68,6 +68,15 @@ logging synchronous
 !
 ipv6 unicast-routing
 !
+interface g0/0/1.100
+encapsulation dot1q 60
+exit
+!
+ip route 100.84.13.1 255.255.255.248 g0/0/1.100
+ipv6 route 2001:DB8:13:ABCD::1/64 FE80::3 g0/0/1.100
+!
+ipv6 route 2001:db8:13::/48 FE80::3 g0/0/1.00
+!
 router bgp 65512
 bgp router-id 13.4.4.4
 bgp log-neighbor-changes
