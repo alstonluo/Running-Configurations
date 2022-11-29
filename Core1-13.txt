@@ -5,6 +5,7 @@ hostname Core1
 !
 no ip domain lookup
 !
+
 ipv6 unicast-routing
 !
 interface GigabitEthernet0/0/0
@@ -152,6 +153,7 @@ router eigrp OntarioTech2022
  exit-address-family
 !
 line con 0
+exec-timeout 0 0
 logging synchronous
 !
 end

@@ -33,12 +33,6 @@ ipv6 address FC00:13:2::2/128
 !
 ip nat inside source static 2.2.2.2 100.84.13.10
 !
-line con 0
-logging synchronous
-!
-ipv6 unicast-routing
-!
-!
 key chain OntarioTech2022
  key 1
  key-string Case$tudy2022
@@ -102,3 +96,9 @@ router eigrp OntarioTech2022
   exit-af-topology
   eigrp router-id 2.2.2.2
  exit-address-family
+!
+line con 0
+exec-timeout 0 0
+logging synchronous
+!
+end
