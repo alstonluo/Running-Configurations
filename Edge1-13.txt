@@ -86,4 +86,7 @@ ip route 100.84.13.1 255.255.255.248 g0/0/1.100
 ipv6 route 2001:DB8:13:ABCD::1/64 FE80::3 g0/0/1.100
 exit
 !
+redistribute ospf 13 metric 1000000 10 255 1 1500
+exit
+!
 end
