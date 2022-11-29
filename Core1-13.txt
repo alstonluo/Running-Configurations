@@ -75,4 +75,8 @@ route-map LOCAL-PBR permit 10
 line con 0
 logging synchronous
 !
+router ospf 13
+area 13 range 10.13.0.0 255.255.255.0
+area 13 range 2001:db8:13:0::0/64
+!
 end
