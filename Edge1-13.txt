@@ -81,7 +81,6 @@ logging synchronous
 !
 ipv6 unicast-routing
 !
-interface g0/0/1.100
 ip route 100.84.13.1 255.255.255.248 g0/0/1.100
 ipv6 route 2001:DB8:13:ABCD::1/64 FE80::3
 exit
